@@ -457,6 +457,17 @@ for (let i = 0; i < donuts.length; i++) {
 
 //Listar todos los donuts y sus carbohidratos (+ 50 exp)
 
+console.log("\n|||||||||||| DONUTS Y SUS CARBOHIDRATOS ||||||||||||");
+
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[i];
+  const currentDonutCarbohydrates =
+    currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type;
+  console.log(
+    `${currentDonut.name}: ${currentDonutCarbohydrates.fibre} de fibra |||||||| ${currentDonutCarbohydrates.sugars} de azúcar`
+  );
+}
+
 //Mostrar la media de calorías de todos los donuts (+ 50 exp)
 
 //Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
