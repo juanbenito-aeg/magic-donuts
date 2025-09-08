@@ -307,25 +307,118 @@ const data = {
 const donuts = data.items.item;
 
 //1.- Nuestro grupo se encuentra totalmente debilitado. Necesitamos tomar azúcares, hierro, proteínas y poca fibra. Para ello debemos preparar un conjuro que nos muestre:
+console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||\n");
 
 //donut con más azúcar (+ 50 exp)
 
+logDonutWithMostSugar();
+
+function logDonutWithMostSugar() {
+  let donutWithMostSugar = donuts[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutSugar =
+      +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
+        "g"
+      )[0];
+
+    const donutWithMostSugarYetSugar =
+      +donutWithMostSugar.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
+        "g"
+      )[0];
+
+    if (currentDonutSugar > donutWithMostSugarYetSugar) {
+      donutWithMostSugar = currentDonut;
+    }
+  }
+
+  console.log(
+    `|||||||||||| EL DONUT CON MÁS AZÚCAR ES "${donutWithMostSugar.name.toUpperCase()}" ||||||||||||`
+  );
+}
+
 //donut con más hierro (+ 50 exp)
+
+logDonutWithMostIron();
+
+function logDonutWithMostIron() {
+  let donutWithMostIron = donuts[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutIron =
+      +currentDonut.nutrition_facts.nutrition.vitamins[3].percent.split("%")[0];
+
+    const donutWithMostIronYetIron =
+      +donutWithMostIron.nutrition_facts.nutrition.vitamins[3].percent.split(
+        "%"
+      )[0];
+
+    if (currentDonutIron > donutWithMostIronYetIron) {
+      donutWithMostIron = currentDonut;
+    }
+  }
+
+  console.log(
+    `|||||||||||| EL DONUT CON MÁS HIERRO ES "${donutWithMostIron.name.toUpperCase()}" ||||||||||||`
+  );
+}
 
 //donut con más proteína (+ 50 exp)
 
+logDonutWithMostProtein();
+
+function logDonutWithMostProtein() {
+  let donutWithMostProtein = donuts[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutProtein =
+      +currentDonut.nutrition_facts.nutrition.protein.split("g")[0];
+
+    const donutWithMostProteinYetProtein =
+      +donutWithMostProtein.nutrition_facts.nutrition.protein.split("g")[0];
+
+    if (currentDonutProtein > donutWithMostProteinYetProtein) {
+      donutWithMostProtein = currentDonut;
+    }
+  }
+
+  console.log(
+    `|||||||||||| EL DONUT CON MÁS PROTEÍNA ES "${donutWithMostProtein.name.toUpperCase()}" ||||||||||||`
+  );
+}
+
 //donut con menos fibra (+ 50 exp)
 
-//donut con más calorías (+ 50 exp)
+logDonutsWithLeastFibre();
 
-let sweetestDonut = donuts[0];
+function logDonutsWithLeastFibre() {
+  let donutsWithLeastFibre = [];
 
-let donutWithMostIron = donuts[0];
+  const lowestFibreValue = getLowestFibreValue();
 
-let donutWithMostProtein = donuts[0];
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
 
-let donutsWithLeastFibre = [];
-const lowestFibreValue = getLowestFibreValue();
+    const currentDonutFibre =
+      +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre.split(
+        "g"
+      )[0];
+
+    if (currentDonutFibre === lowestFibreValue) {
+      donutsWithLeastFibre.push(`"${currentDonut.name.toUpperCase()}"`);
+    }
+  }
+
+  console.log(
+    `|||||||||||| LOS DONUTS CON MENOS FIBRA SON ${donutsWithLeastFibre.join(", ")} ||||||||||||`
+  );
+}
 
 function getLowestFibreValue() {
   let lowestFibreValue =
@@ -349,98 +442,31 @@ function getLowestFibreValue() {
   return lowestFibreValue;
 }
 
-let donutWithMostCalories = donuts[0];
+//donut con más calorías (+ 50 exp)
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[i];
+logDonutWithMostCalories();
 
-  if (i > 0) {
-    updateSweetestDonut(currentDonut);
+function logDonutWithMostCalories() {
+  let donutWithMostCalories = donuts[0];
 
-    updateDonutWithMostIron(currentDonut);
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
 
-    updateDonutWithMostProtein(currentDonut);
+    const currentDonutCalories =
+      currentDonut.nutrition_facts.nutrition.calories;
 
-    updateDonutWithMostCalories(currentDonut);
+    const donutWithMostCaloriesYetCalories =
+      donutWithMostCalories.nutrition_facts.nutrition.calories;
+
+    if (currentDonutCalories > donutWithMostCaloriesYetCalories) {
+      donutWithMostCalories = currentDonut;
+    }
   }
 
-  updateDonutsWithLeastFibre(currentDonut);
+  console.log(
+    `|||||||||||| EL DONUT CON MÁS CALORÍAS ES "${donutWithMostCalories.name.toUpperCase()}" ||||||||||||`
+  );
 }
-
-function updateSweetestDonut(currentDonut) {
-  const currentDonutSugars =
-    +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
-      "g"
-    )[0];
-
-  const sweetestDonutYetSugars =
-    +sweetestDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
-      "g"
-    )[0];
-
-  if (currentDonutSugars > sweetestDonutYetSugars) {
-    sweetestDonut = currentDonut;
-  }
-}
-
-function updateDonutWithMostIron(currentDonut) {
-  const currentDonutIron =
-    +currentDonut.nutrition_facts.nutrition.vitamins[3].percent.split("%")[0];
-
-  const donutWithMostIronYetIron =
-    +donutWithMostIron.nutrition_facts.nutrition.vitamins[3].percent.split(
-      "%"
-    )[0];
-
-  if (currentDonutIron > donutWithMostIronYetIron) {
-    donutWithMostIron = currentDonut;
-  }
-}
-
-function updateDonutWithMostProtein(currentDonut) {
-  const currentDonutProtein =
-    +currentDonut.nutrition_facts.nutrition.protein.split("g")[0];
-
-  const donutWithMostProteinYetProtein =
-    +donutWithMostProtein.nutrition_facts.nutrition.protein.split("g")[0];
-
-  if (currentDonutProtein > donutWithMostProteinYetProtein) {
-    donutWithMostProtein = currentDonut;
-  }
-}
-
-function updateDonutsWithLeastFibre(currentDonut) {
-  const currentDonutFibre =
-    +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre.split(
-      "g"
-    )[0];
-
-  if (currentDonutFibre === lowestFibreValue) {
-    donutsWithLeastFibre.push(`"${currentDonut.name}"`);
-  }
-}
-
-function updateDonutWithMostCalories(currentDonut) {
-  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
-
-  const donutWithMostCaloriesYetCalories =
-    donutWithMostCalories.nutrition_facts.nutrition.calories;
-
-  if (currentDonutCalories > donutWithMostCaloriesYetCalories) {
-    donutWithMostCalories = currentDonut;
-  }
-}
-
-// |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
-
-console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||\n");
-console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
-console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
-console.log(`El donut con más proteína es "${donutWithMostProtein.name}"`);
-console.log(
-  `Los donuts con menos fibra son ${donutsWithLeastFibre.join(", ")}`
-);
-console.log(`El donut con más calorías es "${donutWithMostCalories.name}"`);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
 console.log("\n|||||||||||||||| EJERCICIO NÚMERO 2 ||||||||||||||||\n");
