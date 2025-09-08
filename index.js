@@ -304,6 +304,8 @@ const data = {
   },
 };
 
+const donuts = data.items.item;
+
 //1.- Nuestro grupo se encuentra totalmente debilitado. Necesitamos tomar azúcares, hierro, proteínas y poca fibra. Para ello debemos preparar un conjuro que nos muestre:
 
 //donut con más azúcar (+ 50 exp)
@@ -319,18 +321,49 @@ const data = {
 console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
 
 let sweetestDonut;
+
 let donutWithMostIron;
+
 let donutWithMostProtein;
+
+let donutsWithLeastFibre = [];
+const lowestFibreValue = getLowestFibreValue();
+
+function getLowestFibreValue() {
+  let lowestFibreValue =
+    +donuts[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre.split(
+      "g"
+    )[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutFibre =
+      +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre.split(
+        "g"
+      )[0];
+
+    if (currentDonutFibre < lowestFibreValue) {
+      lowestFibreValue = currentDonutFibre;
+    }
+  }
+
+  return lowestFibreValue;
+}
 
 for (let i = 0; i < data.items.item.length; i++) {
   const currentDonut = data.items.item[i];
 
   sweetestDonut = getSweetestDonutYet(sweetestDonut, currentDonut);
+
   donutWithMostIron = getDonutWithMostIronYet(donutWithMostIron, currentDonut);
+
   donutWithMostProtein = getDonutWithMostProteinYet(
     donutWithMostProtein,
     currentDonut
   );
+
+  updateDonutsWithLeastFibre(currentDonut);
 }
 
 function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
@@ -389,11 +422,25 @@ function getDonutWithMostProteinYet(donutWithMostProteinYet, currentDonut) {
   }
 }
 
+function updateDonutsWithLeastFibre(currentDonut) {
+  const currentDonutFibre =
+    +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre.split(
+      "g"
+    )[0];
+
+  if (currentDonutFibre === lowestFibreValue) {
+    donutsWithLeastFibre.push(`"${currentDonut.name}"`);
+  }
+}
+
 // |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
 
 console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
 console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
 console.log(`El donut con más proteína es "${donutWithMostProtein.name}"`);
+console.log(
+  `Los donuts con menos fibra son ${donutsWithLeastFibre.join(", ")}`
+);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
 
