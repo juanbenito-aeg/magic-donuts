@@ -318,11 +318,11 @@ const donuts = data.items.item;
 
 //donut con más calorías (+ 50 exp)
 
-let sweetestDonut;
+let sweetestDonut = donuts[0];
 
-let donutWithMostIron;
+let donutWithMostIron = donuts[0];
 
-let donutWithMostProtein;
+let donutWithMostProtein = donuts[0];
 
 let donutsWithLeastFibre = [];
 const lowestFibreValue = getLowestFibreValue();
@@ -351,76 +351,61 @@ function getLowestFibreValue() {
 
 let donutWithMostCalories = donuts[0];
 
-for (let i = 0; i < data.items.item.length; i++) {
-  const currentDonut = data.items.item[i];
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[i];
 
-  sweetestDonut = getSweetestDonutYet(sweetestDonut, currentDonut);
+  if (i > 0) {
+    updateSweetestDonut(currentDonut);
 
-  donutWithMostIron = getDonutWithMostIronYet(donutWithMostIron, currentDonut);
+    updateDonutWithMostIron(currentDonut);
 
-  donutWithMostProtein = getDonutWithMostProteinYet(
-    donutWithMostProtein,
-    currentDonut
-  );
+    updateDonutWithMostProtein(currentDonut);
+
+    updateDonutWithMostCalories(currentDonut);
+  }
 
   updateDonutsWithLeastFibre(currentDonut);
-
-  updateDonutWithMostCalories(currentDonut);
 }
 
-function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
+function updateSweetestDonut(currentDonut) {
   const currentDonutSugars =
     +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
       "g"
     )[0];
 
-  const sweetestDonutYetSugarsOr0 =
-    (sweetestDonutYet &&
-      +sweetestDonutYet.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
-        "g"
-      )[0]) ||
-    0;
+  const sweetestDonutYetSugars =
+    +sweetestDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
+      "g"
+    )[0];
 
-  if (currentDonutSugars > sweetestDonutYetSugarsOr0) {
-    return currentDonut;
-  } else {
-    return sweetestDonutYet;
+  if (currentDonutSugars > sweetestDonutYetSugars) {
+    sweetestDonut = currentDonut;
   }
 }
 
-function getDonutWithMostIronYet(donutWithMostIronYet, currentDonut) {
+function updateDonutWithMostIron(currentDonut) {
   const currentDonutIron =
     +currentDonut.nutrition_facts.nutrition.vitamins[3].percent.split("%")[0];
 
-  const donutWithMostIronYetIronOr0 =
-    (donutWithMostIronYet &&
-      +donutWithMostIronYet.nutrition_facts.nutrition.vitamins[3].percent.split(
-        "%"
-      )[0]) ||
-    0;
+  const donutWithMostIronYetIron =
+    +donutWithMostIron.nutrition_facts.nutrition.vitamins[3].percent.split(
+      "%"
+    )[0];
 
-  if (currentDonutIron > donutWithMostIronYetIronOr0) {
-    return currentDonut;
-  } else {
-    return donutWithMostIronYet;
+  if (currentDonutIron > donutWithMostIronYetIron) {
+    donutWithMostIron = currentDonut;
   }
 }
 
-function getDonutWithMostProteinYet(donutWithMostProteinYet, currentDonut) {
+function updateDonutWithMostProtein(currentDonut) {
   const currentDonutProtein =
     +currentDonut.nutrition_facts.nutrition.protein.split("g")[0];
 
-  const donutWithMostProteinYetProteinOr0 =
-    (donutWithMostProteinYet &&
-      +donutWithMostProteinYet.nutrition_facts.nutrition.protein.split(
-        "g"
-      )[0]) ||
-    0;
+  const donutWithMostProteinYetProtein =
+    +donutWithMostProtein.nutrition_facts.nutrition.protein.split("g")[0];
 
-  if (currentDonutProtein > donutWithMostProteinYetProteinOr0) {
-    return currentDonut;
-  } else {
-    return donutWithMostProteinYet;
+  if (currentDonutProtein > donutWithMostProteinYetProtein) {
+    donutWithMostProtein = currentDonut;
   }
 }
 
