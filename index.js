@@ -470,6 +470,20 @@ for (let i = 0; i < donuts.length; i++) {
 
 //Mostrar la media de calorías de todos los donuts (+ 50 exp)
 
+let totalCalories = 0;
+
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[i];
+  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
+  totalCalories += currentDonutCalories;
+}
+
+const caloriesMean = totalCalories / donuts.length;
+
+console.log(
+  `\n|||||||||||| MEDIA DE CALORÍAS DE LOS DONUTS: ${caloriesMean} ||||||||||||`
+);
+
 //Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
 
 //Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
