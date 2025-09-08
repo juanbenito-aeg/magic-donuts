@@ -473,81 +473,113 @@ console.log("\n|||||||||||||||| EJERCICIO NÚMERO 2 ||||||||||||||||\n");
 
 //Listar todos los donuts y sus calorías (+ 50 exp)
 
-console.log("|||||||||||| DONUTS Y SUS CALORÍAS ||||||||||||");
+logDonutsAndTheirCalories();
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[i];
-  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
-  console.log(`${currentDonut.name}: ${currentDonutCalories} calorías`);
+function logDonutsAndTheirCalories() {
+  console.log("|||||||||||| DONUTS Y SUS CALORÍAS ||||||||||||\n");
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutCalories =
+      currentDonut.nutrition_facts.nutrition.calories;
+
+    console.log(`${currentDonut.name}: ${currentDonutCalories} calorías`);
+  }
 }
 
 //Listar todos los donuts y sus carbohidratos (+ 50 exp)
 
-console.log("\n|||||||||||| DONUTS Y SUS CARBOHIDRATOS ||||||||||||");
+logDonutsAndTheirCarbohydrates();
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[i];
-  const currentDonutCarbohydrates =
-    currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type;
-  console.log(
-    `${currentDonut.name}: ${currentDonutCarbohydrates.fibre} de fibra |||||||| ${currentDonutCarbohydrates.sugars} de azúcar`
-  );
+function logDonutsAndTheirCarbohydrates() {
+  console.log("\n|||||||||||| DONUTS Y SUS CARBOHIDRATOS ||||||||||||\n");
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutCarbohydrates =
+      currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type;
+
+    console.log(
+      `${currentDonut.name}: ${currentDonutCarbohydrates.fibre} de fibra |||||||| ${currentDonutCarbohydrates.sugars} de azúcar`
+    );
+  }
 }
 
 //Mostrar la media de calorías de todos los donuts (+ 50 exp)
 
-let totalCalories = 0;
+logAverageCaloriesOfDonuts();
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[i];
-  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
-  totalCalories += currentDonutCalories;
+function logAverageCaloriesOfDonuts() {
+  let totalCalories = 0;
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutCalories =
+      currentDonut.nutrition_facts.nutrition.calories;
+
+    totalCalories += currentDonutCalories;
+  }
+
+  const averageCalories = totalCalories / donuts.length;
+
+  console.log(
+    `\n|||||||||||| MEDIA DE CALORÍAS DE LOS DONUTS: ${averageCalories} ||||||||||||`
+  );
 }
-
-const caloriesMean = totalCalories / donuts.length;
-
-console.log(
-  `\n|||||||||||| MEDIA DE CALORÍAS DE LOS DONUTS: ${caloriesMean} ||||||||||||`
-);
 
 //Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
 
-let totalSaturatedFat = 0;
+logTotalSaturatedFatOfDonuts();
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[i];
-  const currentDonutSaturatedFat =
-    +currentDonut.nutrition_facts.nutrition.fat.fat_type.saturated.split(
-      "g"
-    )[0];
-  totalSaturatedFat += currentDonutSaturatedFat;
+function logTotalSaturatedFatOfDonuts() {
+  let totalSaturatedFat = 0;
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutSaturatedFat =
+      +currentDonut.nutrition_facts.nutrition.fat.fat_type.saturated.split(
+        "g"
+      )[0];
+
+    totalSaturatedFat += currentDonutSaturatedFat;
+  }
+
+  console.log(
+    `\n|||||||||||| SUMA DE LAS GRASAS SATURADAS DE LOS DONUTS: ${totalSaturatedFat}G ||||||||||||`
+  );
 }
-
-console.log(
-  `\n|||||||||||| SUMA DE LAS GRASAS SATURADAS DE LOS DONUTS: ${totalSaturatedFat}G ||||||||||||`
-);
 
 //Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
 
-console.log("\n|||||||||||| PORCENTAJE MEDIO DE CADA VITAMINA ||||||||||||");
+logAveragePercentageOfEachVitamin();
 
-const vitaminsPercentagesSums = {
-  "Vitamin A": 0,
-  "Vitamin C": 0,
-  Calcium: 0,
-  Iron: 0,
-};
+function logAveragePercentageOfEachVitamin() {
+  console.log(
+    "\n|||||||||||| PORCENTAJE MEDIO DE CADA VITAMINA ||||||||||||\n"
+  );
 
-for (let i = 0; i < donuts.length; i++) {
-  const currentDonut = donuts[0];
+  const vitaminsPercentagesSums = {
+    "Vitamin A": 0,
+    "Vitamin C": 0,
+    Calcium: 0,
+    Iron: 0,
+  };
 
-  for (const vitamin in vitaminsPercentagesSums) {
-    vitaminsPercentagesSums[vitamin] +=
-      +currentDonut.nutrition_facts.nutrition.vitamins[vitamin].split("%")[0];
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[0];
+
+    for (const vitamin in vitaminsPercentagesSums) {
+      vitaminsPercentagesSums[vitamin] +=
+        +currentDonut.nutrition_facts.nutrition.vitamins[vitamin].split("%")[0];
+    }
   }
-}
 
-// TODO: IMPRIMIR PORCENTAJE MEDIO DE CADA VITAMINA
+  // TODO: IMPRIMIR PORCENTAJE MEDIO DE CADA VITAMINA
+}
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
 
