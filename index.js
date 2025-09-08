@@ -433,7 +433,7 @@ function updateDonutWithMostCalories(currentDonut) {
 
 // |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
 
-console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
+console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||\n");
 console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
 console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
 console.log(`El donut con más proteína es "${donutWithMostProtein.name}"`);
@@ -443,8 +443,17 @@ console.log(
 console.log(`El donut con más calorías es "${donutWithMostCalories.name}"`);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
+console.log("\n|||||||||||||||| EJERCICIO NÚMERO 2 ||||||||||||||||\n");
 
 //Listar todos los donuts y sus calorías (+ 50 exp)
+
+console.log("|||||||||||| DONUTS Y SUS CALORÍAS ||||||||||||");
+
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[i];
+  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
+  console.log(`${currentDonut.name}: ${currentDonutCalories} calorías`);
+}
 
 //Listar todos los donuts y sus carbohidratos (+ 50 exp)
 
