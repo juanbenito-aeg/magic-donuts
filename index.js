@@ -503,6 +503,26 @@ console.log(
 
 //Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
 
+console.log("\n|||||||||||| PORCENTAJE MEDIO DE CADA VITAMINA ||||||||||||");
+
+const vitaminsPercentagesSums = {
+  "Vitamin A": 0,
+  "Vitamin C": 0,
+  Calcium: 0,
+  Iron: 0,
+};
+
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[0];
+
+  for (const vitamin in vitaminsPercentagesSums) {
+    vitaminsPercentagesSums[vitamin] +=
+      +currentDonut.nutrition_facts.nutrition.vitamins[vitamin].split("%")[0];
+  }
+}
+
+// TODO: IMPRIMIR PORCENTAJE MEDIO DE CADA VITAMINA
+
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
 
 //Listar cada donut con sus posibles masas, batter (+ 50 exp)
