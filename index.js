@@ -319,11 +319,13 @@ const data = {
 console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
 
 let sweetestDonut;
+let donutWithMostIron;
 
 for (let i = 0; i < data.items.item.length; i++) {
   const currentDonut = data.items.item[i];
 
   sweetestDonut = getSweetestDonutYet(sweetestDonut, currentDonut);
+  donutWithMostIron = getDonutWithMostIronYet(donutWithMostIron, currentDonut);
 }
 
 function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
@@ -346,8 +348,28 @@ function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
   }
 }
 
+function getDonutWithMostIronYet(donutWithMostIronYet, currentDonut) {
+  const currentDonutIron =
+    +currentDonut.nutrition_facts.nutrition.vitamins[3].percent.split("%")[0];
+
+  const donutWithMostIronYetIronOr0 =
+    (donutWithMostIronYet &&
+      +donutWithMostIronYet.nutrition_facts.nutrition.vitamins[3].percent.split(
+        "%"
+      )[0]) ||
+    0;
+
+  if (currentDonutIron > donutWithMostIronYetIronOr0) {
+    return currentDonut;
+  } else {
+    return donutWithMostIronYet;
+  }
+}
+
 // |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
+
 console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
+console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
 
