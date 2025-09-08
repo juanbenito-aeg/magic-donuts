@@ -486,6 +486,21 @@ console.log(
 
 //Mostrar la suma de las grasas saturadas de todos los donuts (+ 50 exp)
 
+let totalSaturatedFat = 0;
+
+for (let i = 0; i < donuts.length; i++) {
+  const currentDonut = donuts[i];
+  const currentDonutSaturatedFat =
+    +currentDonut.nutrition_facts.nutrition.fat.fat_type.saturated.split(
+      "g"
+    )[0];
+  totalSaturatedFat += currentDonutSaturatedFat;
+}
+
+console.log(
+  `\n|||||||||||| SUMA DE LAS GRASAS SATURADAS DE LOS DONUTS: ${totalSaturatedFat}G ||||||||||||`
+);
+
 //Mostrar el porcentaje medio de cada vitamina (+ 50 exp)
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
