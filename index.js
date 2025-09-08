@@ -320,12 +320,17 @@ console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
 
 let sweetestDonut;
 let donutWithMostIron;
+let donutWithMostProtein;
 
 for (let i = 0; i < data.items.item.length; i++) {
   const currentDonut = data.items.item[i];
 
   sweetestDonut = getSweetestDonutYet(sweetestDonut, currentDonut);
   donutWithMostIron = getDonutWithMostIronYet(donutWithMostIron, currentDonut);
+  donutWithMostProtein = getDonutWithMostProteinYet(
+    donutWithMostProtein,
+    currentDonut
+  );
 }
 
 function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
@@ -366,10 +371,29 @@ function getDonutWithMostIronYet(donutWithMostIronYet, currentDonut) {
   }
 }
 
+function getDonutWithMostProteinYet(donutWithMostProteinYet, currentDonut) {
+  const currentDonutProtein =
+    +currentDonut.nutrition_facts.nutrition.protein.split("g")[0];
+
+  const donutWithMostProteinYetProteinOr0 =
+    (donutWithMostProteinYet &&
+      +donutWithMostProteinYet.nutrition_facts.nutrition.protein.split(
+        "g"
+      )[0]) ||
+    0;
+
+  if (currentDonutProtein > donutWithMostProteinYetProteinOr0) {
+    return currentDonut;
+  } else {
+    return donutWithMostProteinYet;
+  }
+}
+
 // |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
 
 console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
 console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
+console.log(`El donut con más proteína es "${donutWithMostProtein.name}"`);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
 
