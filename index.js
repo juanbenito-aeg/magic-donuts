@@ -318,8 +318,6 @@ const donuts = data.items.item;
 
 //donut con más calorías (+ 50 exp)
 
-console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
-
 let sweetestDonut;
 
 let donutWithMostIron;
@@ -351,6 +349,8 @@ function getLowestFibreValue() {
   return lowestFibreValue;
 }
 
+let donutWithMostCalories = donuts[0];
+
 for (let i = 0; i < data.items.item.length; i++) {
   const currentDonut = data.items.item[i];
 
@@ -364,6 +364,8 @@ for (let i = 0; i < data.items.item.length; i++) {
   );
 
   updateDonutsWithLeastFibre(currentDonut);
+
+  updateDonutWithMostCalories(currentDonut);
 }
 
 function getSweetestDonutYet(sweetestDonutYet, currentDonut) {
@@ -433,14 +435,27 @@ function updateDonutsWithLeastFibre(currentDonut) {
   }
 }
 
+function updateDonutWithMostCalories(currentDonut) {
+  const currentDonutCalories = currentDonut.nutrition_facts.nutrition.calories;
+
+  const donutWithMostCaloriesYetCalories =
+    donutWithMostCalories.nutrition_facts.nutrition.calories;
+
+  if (currentDonutCalories > donutWithMostCaloriesYetCalories) {
+    donutWithMostCalories = currentDonut;
+  }
+}
+
 // |||||||||||||||| RESULTADOS EJERCICIO NÚMERO 1
 
+console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||");
 console.log(`El donut con más azucar es "${sweetestDonut.name}"`);
 console.log(`El donut con más hierro es "${donutWithMostIron.name}"`);
 console.log(`El donut con más proteína es "${donutWithMostProtein.name}"`);
 console.log(
   `Los donuts con menos fibra son ${donutsWithLeastFibre.join(", ")}`
 );
+console.log(`El donut con más calorías es "${donutWithMostCalories.name}"`);
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
 
