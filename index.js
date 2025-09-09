@@ -608,6 +608,24 @@ function logAveragePercentageOfEachVitamin() {
 
 //Listar cada donut con sus posibles masas, batter (+ 50 exp)
 
+logDonutsAndTheirBatters();
+
+function logDonutsAndTheirBatters() {
+  console.log("\n|||||||||||| DONUTS Y SUS POSIBLES MASAS ||||||||||||\n");
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+    console.log(`${currentDonut.name}:`);
+
+    for (let j = 0; j < currentDonut.batters.batter.length; j++) {
+      const currentBatter = currentDonut.batters.batter[j];
+      console.log(`\t-> ${currentBatter.type}`);
+    }
+
+    console.log();
+  }
+}
+
 //Listar cada donut con sus posibles extras topping (+ 50 exp)
 
 //Mostrar el donut con más variedad de masas (batters) (+ 50 exp)
