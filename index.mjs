@@ -559,7 +559,53 @@ logDonutsAndTheirPPU();
 
 //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
 
-// TODO: LOG THE DETAILS OF EVERY DONUT BEFORE MODIFYING THEM
+function logDonutsDetails() {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    console.log(`${currentDonut.name}:`);
+    console.log(
+      `\t-> Colesterol: ${currentDonut.nutrition_facts.nutrition.cholesterol.amount}`
+    );
+    console.log(
+      `\t-> Grasas trans: ${currentDonut.nutrition_facts.nutrition.fat.fat_type.trans}`
+    );
+    console.log(
+      `\t-> Azúcar: ${currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars}`
+    );
+    console.log(
+      `\t-> Cantidad detalles de carbohidratos: ${currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.amount}`
+    );
+
+    console.log("\t-> Vitaminas:");
+
+    const currentDonutVitamins =
+      currentDonut.nutrition_facts.nutrition.vitamins;
+
+    for (let j = 0; j < currentDonutVitamins.length; j++) {
+      const currentVitamin = currentDonutVitamins[j];
+
+      console.log(
+        `\t\t-> Tipo: ${currentVitamin.type} |||||||| Porcentaje: ${currentVitamin.percent}`
+      );
+    }
+
+    console.log(
+      `\t-> Valor diario de los carbohidratos: ${currentDonut.nutrition_facts.nutrition.carbohydrate.daily_value}`
+    );
+
+    if (currentDonut.Alergen) {
+      console.log(`\t-> Alérgenos: ${currentDonut.Alergen}`);
+    }
+
+    console.log();
+  }
+}
+
+console.log(
+  "\n|||||||||||| LISTADO DE DONUTS CON SUS DETALLES (ANTES DE SER MODIFICADOS) ||||||||||||\n"
+);
+logDonutsDetails();
 
 //Los donuts con el colesterol > 12 modificar las grasas trans a 3,2 gr (+ 50 exp)
 
@@ -570,7 +616,7 @@ function modifyDonutsTransFat() {
     const currentDonut = donuts[i];
 
     const currentDonutCholesterolAmount =
-      +currentDonut.nutrition_facts.nutrition.cholesterol.amount.split("g")[0];
+      +currentDonut.nutrition_facts.nutrition.cholesterol.amount.split("mg")[0];
 
     if (currentDonutCholesterolAmount > 12) {
       currentDonut.nutrition_facts.nutrition.fat.fat_type.trans = "3.2g";
@@ -604,4 +650,7 @@ function modifyDonutsCarbsDetailAmount() {
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
 
-// TODO: LOG THE DETAILS OF EVERY DONUT AFTER MODIFYING THEM
+console.log(
+  "\n|||||||||||| LISTADO DE DONUTS CON SUS DETALLES (TRAS DE SER MODIFICADOS) ||||||||||||\n"
+);
+logDonutsDetails();
