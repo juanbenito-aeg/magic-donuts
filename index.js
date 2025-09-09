@@ -628,6 +628,26 @@ function logDonutsAndTheirBatters() {
 
 //Listar cada donut con sus posibles extras topping (+ 50 exp)
 
+logDonutsAndTheirToppings();
+
+function logDonutsAndTheirToppings() {
+  console.log(
+    "|||||||||||| DONUTS Y SUS POSIBLES EXTRAS TOPPING ||||||||||||\n"
+  );
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+    console.log(`${currentDonut.name}:`);
+
+    for (let j = 0; j < currentDonut.topping.length; j++) {
+      const currentTopping = currentDonut.topping[j];
+      console.log(`\t-> ${currentTopping.type}`);
+    }
+
+    console.log();
+  }
+}
+
 //Mostrar el donut con más variedad de masas (batters) (+ 50 exp)
 
 //Mostrar el donut con más variedad de toppings (+ 50 exp)
