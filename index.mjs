@@ -522,6 +522,39 @@ function logCheapestDonut() {
 
 //Ordenar los donuts por precio de menor a mayor (+ 50 exp)
 
+function logDonuts() {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+    console.log(
+      `${i + 1}. ${currentDonut.name} (${
+        currentDonut.ppu
+      } monedas de plata por unidad)`
+    );
+  }
+}
+
+console.log(
+  "\n|||||||||||| LISTADO DE DONUTS (ANTES DE SER ORDENADOS POR PRECIO DE MENOR A MAYOR) ||||||||||||\n"
+);
+logDonuts();
+
+sortDonutsByPriceAscendingOrder();
+
+function sortDonutsByPriceAscendingOrder() {
+  for (let i = 0; i < donuts.length - 1; i++) {
+    for (let j = i + 1; j < donuts.length; j++) {
+      if (donuts[i].ppu > donuts[j].ppu) {
+        [donuts[i], donuts[j]] = [donuts[j], donuts[i]];
+      }
+    }
+  }
+}
+
+console.log(
+  "\n|||||||||||| LISTADO DE DONUTS (TRAS SER ORDENADOS POR PRECIO DE MENOR A MAYOR) ||||||||||||\n"
+);
+logDonuts();
+
 //Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
