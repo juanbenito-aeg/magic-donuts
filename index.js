@@ -416,7 +416,9 @@ function logDonutsWithLeastFibre() {
   }
 
   console.log(
-    `|||||||||||| LOS DONUTS CON MENOS FIBRA SON ${donutsWithLeastFibre.join(", ")} ||||||||||||`
+    `|||||||||||| LOS DONUTS CON MENOS FIBRA SON ${donutsWithLeastFibre.join(
+      ", "
+    )} ||||||||||||`
   );
 }
 
@@ -570,15 +572,36 @@ function logAveragePercentageOfEachVitamin() {
   };
 
   for (let i = 0; i < donuts.length; i++) {
-    const currentDonut = donuts[0];
+    const currentDonut = donuts[i];
 
-    for (const vitamin in vitaminsPercentagesSums) {
-      vitaminsPercentagesSums[vitamin] +=
-        +currentDonut.nutrition_facts.nutrition.vitamins[vitamin].split("%")[0];
+    for (
+      let j = 0;
+      j < currentDonut.nutrition_facts.nutrition.vitamins.length;
+      j++
+    ) {
+      const currentVitamin = currentDonut.nutrition_facts.nutrition.vitamins[j];
+
+      vitaminsPercentagesSums[currentVitamin.type] +=
+        +currentVitamin.percent.split("%")[0];
     }
   }
 
-  // TODO: IMPRIMIR PORCENTAJE MEDIO DE CADA VITAMINA
+  const vitaminsAveragePercentages = {
+    "Vitamin A": 0,
+    "Vitamin C": 0,
+    Calcium: 0,
+    Iron: 0,
+  };
+
+  for (const vitamin in vitaminsAveragePercentages) {
+    vitaminsAveragePercentages[vitamin] =
+      vitaminsPercentagesSums[vitamin] / donuts.length;
+  }
+
+  console.log(`Vitamina A: ${vitaminsAveragePercentages["Vitamin A"]}%`);
+  console.log(`Vitamina C: ${vitaminsAveragePercentages["Vitamin C"]}%`);
+  console.log(`Calcio: ${vitaminsAveragePercentages["Calcium"]}%`);
+  console.log(`Hierro: ${vitaminsAveragePercentages["Iron"]}%`);
 }
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
