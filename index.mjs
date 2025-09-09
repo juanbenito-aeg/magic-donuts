@@ -502,6 +502,24 @@ function logMostExpensiveDonutThatCanBeBoughtWith4Coins() {
 
 //Encontrar el donut más barato de la posada (+ 50 exp)
 
+logCheapestDonut();
+
+function logCheapestDonut() {
+  let cheapestDonut = donuts[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    if (currentDonut.ppu < cheapestDonut.ppu) {
+      cheapestDonut = currentDonut;
+    }
+  }
+
+  console.log(
+    `\n|||||||||||| EL DONUT MÁS BARATO ES "${cheapestDonut.name.toUpperCase()}" ||||||||||||`
+  );
+}
+
 //Ordenar los donuts por precio de menor a mayor (+ 50 exp)
 
 //Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
