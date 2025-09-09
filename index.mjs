@@ -696,6 +696,30 @@ function setCarbohydratesDailyValueToX(newCarbohydratesDailyValue) {
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
 
+const newDonutPropertyData = {
+  donutName: "Relaxing Alchemy",
+  property: "Alergen",
+  value: "Gluten Free",
+};
+
+createDonutProperty(
+  newDonutPropertyData.donutName,
+  newDonutPropertyData.property,
+  newDonutPropertyData.value
+);
+
+function createDonutProperty(donutName, property, value) {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    if (currentDonut.name === donutName) {
+      currentDonut[property] = value;
+
+      break;
+    }
+  }
+}
+
 console.log(
   "\n|||||||||||| LISTADO DE DONUTS CON SUS DETALLES (TRAS SER MODIFICADOS) ||||||||||||\n"
 );
