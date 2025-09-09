@@ -650,6 +650,28 @@ function logDonutsAndTheirToppings() {
 
 //Mostrar el donut con más variedad de masas (batters) (+ 50 exp)
 
+logDonutWithMostBatters();
+
+function logDonutWithMostBatters() {
+  let donutWithMostBatters = donuts[0];
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+    const currentDonutBattersNumber = currentDonut.batters.batter.length;
+
+    const donutWithMostBattersYetBattersNumber =
+      donutWithMostBatters.batters.batter.length;
+
+    if (currentDonutBattersNumber > donutWithMostBattersYetBattersNumber) {
+      donutWithMostBatters = currentDonut;
+    }
+  }
+
+  console.log(
+    `|||||||||||| EL DONUT CON MÁS VARIEDAD DE MASAS ES "${donutWithMostBatters.name.toUpperCase()}" ||||||||||||`
+  );
+}
+
 //Mostrar el donut con más variedad de toppings (+ 50 exp)
 
 //Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
