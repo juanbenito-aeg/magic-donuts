@@ -677,6 +677,45 @@ function logDonutWithMostBatters() {
 
 //Mostrar el donut con más variedad de toppings (+ 50 exp)
 
+logDonutsWithMostToppings();
+
+function logDonutsWithMostToppings() {
+  const donutsWithMostToppings = [];
+
+  const highestToppingsNumber = getHighestToppingsNumber();
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+    const currentDonutToppingsNumber = currentDonut.topping.length;
+
+    if (currentDonutToppingsNumber === highestToppingsNumber) {
+      donutsWithMostToppings.push(`"${currentDonut.name.toUpperCase()}"`);
+    }
+  }
+
+  console.log(
+    `\n|||||||||||| LOS DONUTS CON MÁS VARIEDAD DE TOPPINGS SON ${donutsWithMostToppings.join(
+      ", "
+    )} ||||||||||||`
+  );
+}
+
+function getHighestToppingsNumber() {
+  let highestToppingsNumber = donuts[0].topping.length;
+
+  for (let i = 1; i < donuts.length; i++) {
+    const currentDonutToppingsNumber =
+      donuts[i].topping.length -
+      1; /* THE "None" TOPPING ISN'T TAKEN INTO ACCOUNT */
+
+    if (currentDonutToppingsNumber > highestToppingsNumber) {
+      highestToppingsNumber = currentDonutToppingsNumber;
+    }
+  }
+
+  return highestToppingsNumber;
+}
+
 //Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
 
 //4.- Nuestro grupo sólo dispone de 4 monedas de plata.
