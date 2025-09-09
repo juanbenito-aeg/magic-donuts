@@ -681,6 +681,19 @@ function addNewVitaminToMagicFusion() {
 
 //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
 
+const newCarbohydratesDailyValue = 53;
+
+setCarbohydratesDailyValueToX(newCarbohydratesDailyValue);
+
+function setCarbohydratesDailyValueToX(newCarbohydratesDailyValue) {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    currentDonut.nutrition_facts.nutrition.carbohydrate.daily_value =
+      newCarbohydratesDailyValue + "%";
+  }
+}
+
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
 
 console.log(
