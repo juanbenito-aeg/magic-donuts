@@ -641,7 +641,10 @@ function logDonutsAndTheirToppings() {
 
     for (let j = 0; j < currentDonut.topping.length; j++) {
       const currentTopping = currentDonut.topping[j];
-      console.log(`\t-> ${currentTopping.type}`);
+
+      if (currentTopping.type !== "None") {
+        console.log(`\t-> ${currentTopping.type}`);
+      }
     }
 
     console.log();
