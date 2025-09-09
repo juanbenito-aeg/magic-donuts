@@ -561,6 +561,21 @@ logDonuts();
 
 //Los donuts con el colesterol > 12 modificar las grasas trans a 3,2 gr (+ 50 exp)
 
+modifyDonutsTransFat();
+
+function modifyDonutsTransFat() {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutCholesterolAmount =
+      +currentDonut.nutrition_facts.nutrition.cholesterol.amount.split("g")[0];
+
+    if (currentDonutCholesterolAmount > 12) {
+      currentDonut.nutrition_facts.nutrition.fat.fat_type.trans = "3.2g";
+    }
+  }
+}
+
 //Donuts con azúcar > 50  modificar el amount de los detalles de carbohidratos a 42gr (+ 50 exp)
 
 //Añadir una vitamina llamada "Nitacina" al donut con el nombre "Magic Fusion" (+ 50 exp)
