@@ -659,6 +659,26 @@ function modifyDonutsCarbsDetailAmount() {
 
 //Añadir una vitamina llamada "Nitacina" al donut con el nombre "Magic Fusion" (+ 50 exp)
 
+addNewVitaminToMagicFusion();
+
+function addNewVitaminToMagicFusion() {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    if (currentDonut.name === "Magic Fusion") {
+      const newVitamin = {
+        type: "Nitacina",
+        percent: "10%",
+      };
+
+      const currentDonutVitamins =
+        currentDonut.nutrition_facts.nutrition.vitamins;
+
+      currentDonutVitamins.push(newVitamin);
+    }
+  }
+}
+
 //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
