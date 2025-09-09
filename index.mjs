@@ -3,7 +3,9 @@ import data from "./data.mjs";
 const donuts = data.items.item;
 
 //1.- Nuestro grupo se encuentra totalmente debilitado. Necesitamos tomar azúcares, hierro, proteínas y poca fibra. Para ello debemos preparar un conjuro que nos muestre:
-console.log("|||||||||||||||| EJERCICIO NÚMERO 1 ||||||||||||||||\n");
+console.log(
+  "|||||||||||||||| BLOQUE DE EJERCICIOS NÚMERO 1 ||||||||||||||||\n"
+);
 
 //donut con más azúcar (+ 50 exp)
 
@@ -167,7 +169,9 @@ function logDonutWithMostCalories() {
 }
 
 //2.- Necesitamos saber si la ingesta de calorías, grasas y carbohidratos puede mellar nuestra agilidad por lo que necesitamos:
-console.log("\n|||||||||||||||| EJERCICIO NÚMERO 2 ||||||||||||||||\n");
+console.log(
+  "\n|||||||||||||||| BLOQUE DE EJERCICIOS NÚMERO 2 ||||||||||||||||\n"
+);
 
 //Listar todos los donuts y sus calorías (+ 50 exp)
 
@@ -301,6 +305,9 @@ function logAveragePercentageOfEachVitamin() {
 }
 
 //3.- El horno a la leña de esta posada es de alta calidad, debemos lanzar un hechizo para saber qué tipo de masa utilizan
+console.log(
+  "\n|||||||||||||||| BLOQUE DE EJERCICIOS NÚMERO 3 ||||||||||||||||"
+);
 
 //Listar cada donut con sus posibles masas, batter (+ 50 exp)
 
@@ -452,6 +459,9 @@ function logTotalNumOfDiffBattersAndToppings() {
 }
 
 //4.- Nuestro grupo sólo dispone de 4 monedas de plata.
+console.log(
+  "\n|||||||||||||||| BLOQUE DE EJERCICIOS NÚMERO 4 ||||||||||||||||"
+);
 
 //Mostrar cuántos donuts de cada tipo podemos comprar y las monedas sobrantes. (+ 50 exp)
 
@@ -558,6 +568,9 @@ logDonutsAndTheirPPU();
 //Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
+console.log(
+  "\n|||||||||||||||| BLOQUE DE EJERCICIOS NÚMERO 5 ||||||||||||||||"
+);
 
 function logDonutsDetails() {
   for (let i = 0; i < donuts.length; i++) {
@@ -651,6 +664,6 @@ function modifyDonutsCarbsDetailAmount() {
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
 
 console.log(
-  "\n|||||||||||| LISTADO DE DONUTS CON SUS DETALLES (TRAS DE SER MODIFICADOS) ||||||||||||\n"
+  "\n|||||||||||| LISTADO DE DONUTS CON SUS DETALLES (TRAS SER MODIFICADOS) ||||||||||||\n"
 );
 logDonutsDetails();
