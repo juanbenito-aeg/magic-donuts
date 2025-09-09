@@ -455,6 +455,28 @@ function logTotalNumOfDiffBattersAndToppings() {
 
 //Mostrar cuántos donuts de cada tipo podemos comprar y las monedas sobrantes. (+ 50 exp)
 
+logHowManyDonutsCanBeBoughtAndRemainingCoins();
+
+function logHowManyDonutsCanBeBoughtAndRemainingCoins() {
+  console.log(
+    "\n|||||||||||| CUÁNTOS DONUTS DE CADA TIPO SE PUEDEN COMPRAR CON 4 MONEDAS Y LAS MONEDAS SOBRANTES ||||||||||||\n"
+  );
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const AVAILABLE_COINS = 4;
+    const numberOfDonutsThatCanBeBought = Math.floor(
+      AVAILABLE_COINS / currentDonut.ppu
+    );
+    const remainingCoins = (AVAILABLE_COINS % currentDonut.ppu).toFixed(2);
+
+    console.log(`${currentDonut.name}:`);
+    console.log(`\t-> Se pueden comprar ${numberOfDonutsThatCanBeBought}`);
+    console.log(`\t-> Sobran ${remainingCoins} monedas\n`);
+  }
+}
+
 //Encontrar el donut más caro que aún podamos comprar con 4 monedas de plata (+ 50 exp)
 
 //Encontrar el donut más barato de la posada (+ 50 exp)
