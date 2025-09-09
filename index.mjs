@@ -522,7 +522,7 @@ function logCheapestDonut() {
 
 //Ordenar los donuts por precio de menor a mayor (+ 50 exp)
 
-function logDonuts() {
+function logDonutsAndTheirPPU() {
   for (let i = 0; i < donuts.length; i++) {
     const currentDonut = donuts[i];
     console.log(
@@ -536,7 +536,7 @@ function logDonuts() {
 console.log(
   "\n|||||||||||| LISTADO DE DONUTS (ANTES DE SER ORDENADOS POR PRECIO DE MENOR A MAYOR) ||||||||||||\n"
 );
-logDonuts();
+logDonutsAndTheirPPU();
 
 sortDonutsByPriceAscendingOrder();
 
@@ -553,11 +553,13 @@ function sortDonutsByPriceAscendingOrder() {
 console.log(
   "\n|||||||||||| LISTADO DE DONUTS (TRAS SER ORDENADOS POR PRECIO DE MENOR A MAYOR) ||||||||||||\n"
 );
-logDonuts();
+logDonutsAndTheirPPU();
 
 //Calcular cuántos donuts distintos podríamos comprar con 4 monedas en total (mezclando tipos) (+ 50 exp)
 
 //5.- Para nuestro horror y preocupación hemos detectado grandes errores sintácticos en el conjuro original, es momento de poner nuestros conocimientos arcanos al servicio de toda la posada.
+
+// TODO: LOG THE DETAILS OF EVERY DONUT BEFORE MODIFYING THEM
 
 //Los donuts con el colesterol > 12 modificar las grasas trans a 3,2 gr (+ 50 exp)
 
@@ -578,8 +580,28 @@ function modifyDonutsTransFat() {
 
 //Donuts con azúcar > 50  modificar el amount de los detalles de carbohidratos a 42gr (+ 50 exp)
 
+modifyDonutsCarbsDetailAmount();
+
+function modifyDonutsCarbsDetailAmount() {
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    const currentDonutSugars =
+      +currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars.split(
+        "g"
+      )[0];
+
+    if (currentDonutSugars > 50) {
+      currentDonut.nutrition_facts.nutrition.carbohydrate.carbs_detail.amount =
+        "42g";
+    }
+  }
+}
+
 //Añadir una vitamina llamada "Nitacina" al donut con el nombre "Magic Fusion" (+ 50 exp)
 
 //El daily value de los carbohidratos de todos los donuts va a ser de 53% (+ 50 exp)
 
 //Crearle un nuevo atributo "Alergen" al donut llamado "Relaxing Alchemy" y que dentro de el ponga "Gluten Free" (+ 50 exp)
+
+// TODO: LOG THE DETAILS OF EVERY DONUT AFTER MODIFYING THEM
