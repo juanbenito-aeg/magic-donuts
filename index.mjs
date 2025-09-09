@@ -479,6 +479,27 @@ function logHowManyDonutsCanBeBoughtAndRemainingCoins() {
 
 //Encontrar el donut más caro que aún podamos comprar con 4 monedas de plata (+ 50 exp)
 
+logMostExpensiveDonutThatCanBeBoughtWith4Coins();
+
+function logMostExpensiveDonutThatCanBeBoughtWith4Coins() {
+  let mostExpensiveDonut;
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    if (
+      currentDonut.ppu <= 4 &&
+      currentDonut.ppu > ((mostExpensiveDonut && mostExpensiveDonut.ppu) || 0)
+    ) {
+      mostExpensiveDonut = currentDonut;
+    }
+  }
+
+  console.log(
+    `|||||||||||| EL DONUT MÁS CARO QUE AÚN SE PUEDE COMPRAR CON 4 MONEDAS ES "${mostExpensiveDonut.name.toUpperCase()}" ||||||||||||`
+  );
+}
+
 //Encontrar el donut más barato de la posada (+ 50 exp)
 
 //Ordenar los donuts por precio de menor a mayor (+ 50 exp)
