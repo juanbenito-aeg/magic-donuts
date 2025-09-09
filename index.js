@@ -718,6 +718,43 @@ function getHighestToppingsNumber() {
 
 //Contar el número total de masas y toppings diferentes que existen en toda la posada (+ 50 exp)
 
+logTotalNumOfDiffBattersAndToppings();
+
+function logTotalNumOfDiffBattersAndToppings() {
+  console.log(
+    "\n|||||||||||| NÚMERO TOTAL DE MASAS Y TOPPINGS DIFERENTES ||||||||||||\n"
+  );
+
+  const batters = [];
+  const toppings = [];
+
+  for (let i = 0; i < donuts.length; i++) {
+    const currentDonut = donuts[i];
+
+    for (let j = 0; j < currentDonut.batters.batter.length; j++) {
+      const currentBatterType = currentDonut.batters.batter[j].type;
+
+      if (!batters.includes(currentBatterType)) {
+        batters.push(currentBatterType);
+      }
+    }
+
+    for (let j = 0; j < currentDonut.topping.length; j++) {
+      const currentToppingType = currentDonut.topping[j].type;
+
+      if (
+        currentToppingType !== "None" &&
+        !toppings.includes(currentToppingType)
+      ) {
+        toppings.push(currentToppingType);
+      }
+    }
+  }
+
+  console.log(`Masas: ${batters.length}`);
+  console.log(`Toppings: ${toppings.length}`);
+}
+
 //4.- Nuestro grupo sólo dispone de 4 monedas de plata.
 
 //Mostrar cuántos donuts de cada tipo podemos comprar y las monedas sobrantes. (+ 50 exp)
